@@ -99,19 +99,20 @@ namespace DeckSensorVer2
             }
             TxtBoxReceivedData.Text += "\r\n";
 
-            if (unitId == dataReceived[5])
+           
+            switch (dataType)
             {
-                switch (dataType)
-                {
-                    case 101: // Preset Data Received
-                        int whichPreset = dataReceived[3];
-                        if (presetButtons[whichPreset].Checked == false)
-                        {
-                            presetButtons[whichPreset].Checked = true;
-                        }
-                        break;
+                case 101: // Preset Status Received
+                    int whichPreset = dataReceived[3];
+                    if (presetButtons[whichPreset].Checked == false)
+                    {
+                        presetButtons[whichPreset].Checked = true;
+                    }
+                    break;
 
-                    case 106: // Zone Status Received
+                case 106: // Zone Status Received
+                    if (unitId == dataReceived[5])
+                    {
                         int whichZone = dataReceived[11];
                         int statusOfZone = dataReceived[12];
                         switch (statusOfZone)
@@ -131,11 +132,11 @@ namespace DeckSensorVer2
                             default:
                                 break;
                         }
-                        break;
+                    }
+                    break;
 
-                    default:
-                        break;
-                }
+                default:
+                    break;
             }
         }
 
