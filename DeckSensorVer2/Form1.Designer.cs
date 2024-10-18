@@ -53,6 +53,12 @@
             BtnZone5 = new Button();
             BtnZone6 = new Button();
             BtnQueryZones = new Button();
+            TxtBoxSentData = new TextBox();
+            TxtBoxReceivedData = new TextBox();
+            LblSentData = new Label();
+            LblReceivedData = new Label();
+            BtnClearSentData = new Button();
+            BtnClearReceivedData = new Button();
             GrpBoxCommSettings.SuspendLayout();
             GrpBoxPresets.SuspendLayout();
             GrpBoxZoneStatus.SuspendLayout();
@@ -262,7 +268,7 @@
             GrpBoxZoneStatus.Font = new Font("Calibri", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             GrpBoxZoneStatus.Location = new Point(12, 250);
             GrpBoxZoneStatus.Name = "GrpBoxZoneStatus";
-            GrpBoxZoneStatus.Size = new Size(776, 236);
+            GrpBoxZoneStatus.Size = new Size(776, 230);
             GrpBoxZoneStatus.TabIndex = 2;
             GrpBoxZoneStatus.TabStop = false;
             GrpBoxZoneStatus.Text = "Channel Status";
@@ -335,18 +341,92 @@
             // 
             // BtnQueryZones
             // 
-            BtnQueryZones.Location = new Point(24, 156);
+            BtnQueryZones.Location = new Point(276, 151);
             BtnQueryZones.Name = "BtnQueryZones";
             BtnQueryZones.Size = new Size(226, 62);
             BtnQueryZones.TabIndex = 16;
             BtnQueryZones.Text = "Get Channel Status";
             BtnQueryZones.UseVisualStyleBackColor = true;
             // 
+            // TxtBoxSentData
+            // 
+            TxtBoxSentData.Font = new Font("Consolas", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtBoxSentData.Location = new Point(18, 541);
+            TxtBoxSentData.Multiline = true;
+            TxtBoxSentData.Name = "TxtBoxSentData";
+            TxtBoxSentData.ReadOnly = true;
+            TxtBoxSentData.ScrollBars = ScrollBars.Vertical;
+            TxtBoxSentData.Size = new Size(230, 357);
+            TxtBoxSentData.TabIndex = 3;
+            TxtBoxSentData.Text = "FF FF FF FF";
+            // 
+            // TxtBoxReceivedData
+            // 
+            TxtBoxReceivedData.Font = new Font("Consolas", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TxtBoxReceivedData.Location = new Point(270, 541);
+            TxtBoxReceivedData.Multiline = true;
+            TxtBoxReceivedData.Name = "TxtBoxReceivedData";
+            TxtBoxReceivedData.ReadOnly = true;
+            TxtBoxReceivedData.ScrollBars = ScrollBars.Vertical;
+            TxtBoxReceivedData.Size = new Size(518, 357);
+            TxtBoxReceivedData.TabIndex = 4;
+            TxtBoxReceivedData.Text = "FF FF FF FF FF FF FF FF FF FF FF FF FF";
+            // 
+            // LblSentData
+            // 
+            LblSentData.AutoSize = true;
+            LblSentData.Font = new Font("Calibri", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LblSentData.ImageAlign = ContentAlignment.MiddleLeft;
+            LblSentData.Location = new Point(18, 506);
+            LblSentData.Name = "LblSentData";
+            LblSentData.Size = new Size(166, 29);
+            LblSentData.TabIndex = 5;
+            LblSentData.Text = "Sent Data (Hex)";
+            LblSentData.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // LblReceivedData
+            // 
+            LblReceivedData.AutoSize = true;
+            LblReceivedData.Font = new Font("Calibri", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LblReceivedData.ImageAlign = ContentAlignment.MiddleLeft;
+            LblReceivedData.Location = new Point(270, 506);
+            LblReceivedData.Name = "LblReceivedData";
+            LblReceivedData.Size = new Size(212, 29);
+            LblReceivedData.TabIndex = 6;
+            LblReceivedData.Text = "Received Data (Hex)";
+            LblReceivedData.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // BtnClearSentData
+            // 
+            BtnClearSentData.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnClearSentData.Location = new Point(18, 904);
+            BtnClearSentData.Name = "BtnClearSentData";
+            BtnClearSentData.Size = new Size(200, 50);
+            BtnClearSentData.TabIndex = 7;
+            BtnClearSentData.Text = "Clear Sent Data";
+            BtnClearSentData.UseVisualStyleBackColor = true;
+            // 
+            // BtnClearReceivedData
+            // 
+            BtnClearReceivedData.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnClearReceivedData.Location = new Point(270, 904);
+            BtnClearReceivedData.Name = "BtnClearReceivedData";
+            BtnClearReceivedData.Size = new Size(200, 50);
+            BtnClearReceivedData.TabIndex = 8;
+            BtnClearReceivedData.Text = "Clear Received Data";
+            BtnClearReceivedData.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 884);
+            ClientSize = new Size(800, 967);
+            Controls.Add(BtnClearReceivedData);
+            Controls.Add(BtnClearSentData);
+            Controls.Add(LblReceivedData);
+            Controls.Add(LblSentData);
+            Controls.Add(TxtBoxReceivedData);
+            Controls.Add(TxtBoxSentData);
             Controls.Add(GrpBoxZoneStatus);
             Controls.Add(GrpBoxPresets);
             Controls.Add(GrpBoxCommSettings);
@@ -359,6 +439,7 @@
             GrpBoxPresets.PerformLayout();
             GrpBoxZoneStatus.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -388,5 +469,11 @@
         private Button BtnZone3;
         private Button BtnZone2;
         private Button BtnQueryZones;
+        private TextBox TxtBoxSentData;
+        private TextBox TxtBoxReceivedData;
+        private Label LblSentData;
+        private Label LblReceivedData;
+        private Button BtnClearSentData;
+        private Button BtnClearReceivedData;
     }
 }
