@@ -8,11 +8,11 @@ namespace DeckSensorVer2
 {
     public partial class Form1 : Form
     {
-        int udpListenPort = 42501;
-        int udpSendPort = 42001;
-        int unitId = 1;
-        string strIpAddress = "192.168.100.100";
-        bool isListening;
+        int udpListenPort = 42507;
+        int udpSendPort = 42007;
+        int unitId = 7;
+        string strIpAddress = "10.20.78.181";
+        bool isListening = false;
 
         UdpClient udpClient = new UdpClient();
 
@@ -127,7 +127,7 @@ namespace DeckSensorVer2
 
                     case 101: // Preset Data Received
                         int whichPreset = dataReceived[3];
-                        if (presetButtons[whichPreset].Checked == false) ;
+                        if (presetButtons[whichPreset].Checked == false);
                         {
                             presetButtons[whichPreset].Checked = true;
                         }
@@ -152,36 +152,14 @@ namespace DeckSensorVer2
             TxtBoxSentData.Text += "\r\n";
         }
 
-        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {
-            UdpClient listener = new UdpClient(udpListenPort);
-            IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, udpListenPort);
-
-            while (isListening)
-            {
-                byte[] recvBytes = listener.Receive(ref groupEP);
-
-                this.Invoke(new MethodInvoker(delegate { parseReceivedData(recvBytes); }));
-            }
-
-            listener.Close();
-        }
-
-        private void backgroundWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
-        {
-            isListening = false;
-            BtnQueryPresets.Enabled = false;
-            BtnQueryZones.Enabled = false;
-        }
-
         private void BtnStartListening_Click(object sender, EventArgs e)
         {
             if (!backgroundWorker1.IsBusy)
             {
                 isListening = true;
                 strIpAddress = TxtBoxIpAddress.Text;
-                udpListenPort = int.Parse(TxtBoxUdpListenPort.Text);  
-                udpSendPort = int.Parse(TxtBoxUdpSendPort.Text);    
+                udpListenPort = int.Parse(TxtBoxUdpListenPort.Text);
+                udpSendPort = int.Parse(TxtBoxUdpSendPort.Text);
                 unitId = int.Parse(TxtBoxUniId.Text);
                 backgroundWorker1.RunWorkerAsync();
                 BtnStartListening.Text = "Listening";
@@ -215,22 +193,44 @@ namespace DeckSensorVer2
 
         private void TxtBoxIpAddress_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void TxtBoxUdpListenPort_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void TxtBoxUdpSendPort_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void TxtBoxUniId_TextChanged(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void backgroundWorker1_DoWork_1(object sender, DoWorkEventArgs e)
+        {
+            UdpClient listener = new UdpClient(udpListenPort);
+            IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, udpListenPort);
+
+            while (isListening)
+            {
+                byte[] recvBytes = listener.Receive(ref groupEP);
+
+                this.Invoke(new MethodInvoker(delegate { parseReceivedData(recvBytes); }));
+            }
+
+            listener.Close();
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted_1(object sender, RunWorkerCompletedEventArgs e)
+        {
+            isListening = false;
+            BtnQueryPresets.Enabled = false;
+            BtnQueryZones.Enabled = false;
         }
     }
 }

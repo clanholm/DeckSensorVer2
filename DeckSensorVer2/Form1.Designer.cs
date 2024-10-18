@@ -92,7 +92,7 @@
             TxtBoxUniId.Name = "TxtBoxUniId";
             TxtBoxUniId.Size = new Size(171, 30);
             TxtBoxUniId.TabIndex = 12;
-            TxtBoxUniId.Text = "1";
+            TxtBoxUniId.Text = "7";
             TxtBoxUniId.TextChanged += TxtBoxUniId_TextChanged;
             // 
             // TxtBoxUdpSendPort
@@ -102,7 +102,7 @@
             TxtBoxUdpSendPort.Name = "TxtBoxUdpSendPort";
             TxtBoxUdpSendPort.Size = new Size(171, 30);
             TxtBoxUdpSendPort.TabIndex = 11;
-            TxtBoxUdpSendPort.Text = "42001";
+            TxtBoxUdpSendPort.Text = "42007";
             TxtBoxUdpSendPort.TextChanged += TxtBoxUdpSendPort_TextChanged;
             // 
             // TxtBoxUdpListenPort
@@ -112,7 +112,7 @@
             TxtBoxUdpListenPort.Name = "TxtBoxUdpListenPort";
             TxtBoxUdpListenPort.Size = new Size(171, 30);
             TxtBoxUdpListenPort.TabIndex = 10;
-            TxtBoxUdpListenPort.Text = "42501";
+            TxtBoxUdpListenPort.Text = "42507";
             TxtBoxUdpListenPort.TextChanged += TxtBoxUdpListenPort_TextChanged;
             // 
             // BtnStopListening
@@ -187,7 +187,7 @@
             TxtBoxIpAddress.Name = "TxtBoxIpAddress";
             TxtBoxIpAddress.Size = new Size(171, 30);
             TxtBoxIpAddress.TabIndex = 0;
-            TxtBoxIpAddress.Text = "192.168.100.100";
+            TxtBoxIpAddress.Text = "10.20.78.181";
             TxtBoxIpAddress.TextChanged += TxtBoxIpAddress_TextChanged;
             // 
             // GrpBoxPresets
@@ -429,6 +429,8 @@
             // backgroundWorker1
             // 
             backgroundWorker1.WorkerSupportsCancellation = true;
+            backgroundWorker1.DoWork += backgroundWorker1_DoWork_1;
+            backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted_1;
             // 
             // Form1
             // 
