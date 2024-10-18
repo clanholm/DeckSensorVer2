@@ -103,6 +103,14 @@ namespace DeckSensorVer2
             {
                 switch (dataType)
                 {
+                    case 101: // Preset Data Received
+                        int whichPreset = dataReceived[3];
+                        if (presetButtons[whichPreset].Checked == false) ;
+                        {
+                            presetButtons[whichPreset].Checked = true;
+                        }
+                        break;
+
                     case 106: // Zone Status Received
                         int whichZone = dataReceived[11];
                         int statusOfZone = dataReceived[12];
@@ -122,14 +130,6 @@ namespace DeckSensorVer2
 
                             default:
                                 break;
-                        }
-                        break;
-
-                    case 101: // Preset Data Received
-                        int whichPreset = dataReceived[3];
-                        if (presetButtons[whichPreset].Checked == false);
-                        {
-                            presetButtons[whichPreset].Checked = true;
                         }
                         break;
 
