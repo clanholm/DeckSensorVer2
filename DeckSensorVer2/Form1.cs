@@ -105,7 +105,7 @@ namespace DeckSensorVer2
                 {
                     case 101: // Preset Data Received
                         int whichPreset = dataReceived[3];
-                        if (presetButtons[whichPreset].Checked == false) ;
+                        if (presetButtons[whichPreset].Checked == false)
                         {
                             presetButtons[whichPreset].Checked = true;
                         }
