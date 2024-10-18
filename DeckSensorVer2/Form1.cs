@@ -102,7 +102,7 @@ namespace DeckSensorVer2
            
             switch (dataType)
             {
-                case 101: // Preset Status Received
+                case 101: // Preset Status Received - Preset Data has no Unit ID
                     int whichPreset = dataReceived[3];
                     if (presetButtons[whichPreset].Checked == false)
                     {
