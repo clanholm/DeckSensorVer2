@@ -1,3 +1,4 @@
+using System.Collections;
 using System.ComponentModel;
 using System.Net;
 using System.Net.Sockets;
@@ -33,6 +34,57 @@ namespace DeckSensorVer2
             {
                 presetButton.Click += PresetButton_Click;
             }
+
+            foreach (var zoneButton in zoneStatusButtons)
+            {
+                zoneButton.Click += ZoneButton_Click;
+            }
+        }
+
+        private void ZoneButton_Click(object? sender, EventArgs e)
+        {
+            Button? clickedZoneStatusBtn = sender as Button;
+
+            if (clickedZoneStatusBtn != null)
+            {
+                int zoneStatusBtnIdx = Array.IndexOf(zoneStatusButtons, clickedZoneStatusBtn);
+                Byte zoneByte = 0x3F;
+                switch (zoneStatusBtnIdx)
+                {
+                    case 0:
+                        zoneByte = 0x01;
+                        break;
+
+                    case 1:
+                        zoneByte = 0x02;
+                        break;
+
+                    case 2:
+                        zoneByte = 0x04;
+                        break;
+
+                    case 3:
+                        zoneByte = 0x08;
+                        break;
+
+                    case 4:
+                        zoneByte = 0x10;
+                        break;
+
+                    case 5:
+                        zoneByte = 0x20;
+                        break;
+
+                    default:
+                        break;
+                }
+                Byte[] dataToSend = { 0x54, 0x66, 0x66, zoneByte };
+                sendDataToDeckSensor(dataToSend);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
 
         private void PresetButton_Click(object? sender, EventArgs e)
@@ -40,14 +92,18 @@ namespace DeckSensorVer2
             RadioButton? clickedRadioBtn = sender as RadioButton;
 
             int presetBtnIdx = Array.IndexOf(presetButtons, clickedRadioBtn);
-            if (presetBtnIdx >= 0)
+
+            if (clickedRadioBtn != null)
             {
                 if (presetButtons[presetBtnIdx].Checked == true)
                 {
                     sendPreset(presetBtnIdx);
                 }
             }
-            // throw new NotImplementedException();
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
 
         private void BtnQueryPresets_Click(object sender, EventArgs e)
@@ -170,6 +226,10 @@ namespace DeckSensorVer2
                 BtnStartListening.BackColor = Color.LightGreen;
                 BtnQueryPresets.Enabled = true;
                 BtnQueryZones.Enabled = true;
+                for (int i = 0; i <= 5; i++)
+                {
+                    zoneStatusButtons[i].Enabled = true;
+                }
             }
         }
 
@@ -188,6 +248,10 @@ namespace DeckSensorVer2
                 BtnStartListening.Enabled = true;
                 BtnStopListening.Text = "Stopped";
                 BtnStopListening.Enabled = false;
+                for (int i = 0; i <= 5; i++)
+                {
+                    zoneStatusButtons[i].Enabled = false;
+                }
                 sendDataToDeckSensor(dataToSend);
             }
         }
