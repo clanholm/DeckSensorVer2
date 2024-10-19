@@ -81,7 +81,7 @@
             GrpBoxCommSettings.Location = new Point(12, 12);
             GrpBoxCommSettings.Name = "GrpBoxCommSettings";
             GrpBoxCommSettings.Size = new Size(491, 217);
-            GrpBoxCommSettings.TabIndex = 0;
+            GrpBoxCommSettings.TabIndex = 22;
             GrpBoxCommSettings.TabStop = false;
             GrpBoxCommSettings.Text = "Communication Settings";
             // 
@@ -91,7 +91,7 @@
             TxtBoxUniId.Location = new Point(155, 161);
             TxtBoxUniId.Name = "TxtBoxUniId";
             TxtBoxUniId.Size = new Size(171, 30);
-            TxtBoxUniId.TabIndex = 12;
+            TxtBoxUniId.TabIndex = 3;
             TxtBoxUniId.Text = "7";
             TxtBoxUniId.TextChanged += TxtBoxUniId_TextChanged;
             // 
@@ -101,7 +101,7 @@
             TxtBoxUdpSendPort.Location = new Point(155, 122);
             TxtBoxUdpSendPort.Name = "TxtBoxUdpSendPort";
             TxtBoxUdpSendPort.Size = new Size(171, 30);
-            TxtBoxUdpSendPort.TabIndex = 11;
+            TxtBoxUdpSendPort.TabIndex = 2;
             TxtBoxUdpSendPort.Text = "42007";
             TxtBoxUdpSendPort.TextChanged += TxtBoxUdpSendPort_TextChanged;
             // 
@@ -111,7 +111,7 @@
             TxtBoxUdpListenPort.Location = new Point(155, 83);
             TxtBoxUdpListenPort.Name = "TxtBoxUdpListenPort";
             TxtBoxUdpListenPort.Size = new Size(171, 30);
-            TxtBoxUdpListenPort.TabIndex = 10;
+            TxtBoxUdpListenPort.TabIndex = 1;
             TxtBoxUdpListenPort.Text = "42507";
             TxtBoxUdpListenPort.TextChanged += TxtBoxUdpListenPort_TextChanged;
             // 
@@ -121,7 +121,7 @@
             BtnStopListening.Location = new Point(343, 126);
             BtnStopListening.Name = "BtnStopListening";
             BtnStopListening.Size = new Size(127, 69);
-            BtnStopListening.TabIndex = 9;
+            BtnStopListening.TabIndex = 5;
             BtnStopListening.Text = "Stop Listening";
             BtnStopListening.UseVisualStyleBackColor = true;
             BtnStopListening.Click += BtnStopListening_Click;
@@ -131,7 +131,7 @@
             BtnStartListening.Location = new Point(343, 48);
             BtnStartListening.Name = "BtnStartListening";
             BtnStartListening.Size = new Size(127, 69);
-            BtnStartListening.TabIndex = 8;
+            BtnStartListening.TabIndex = 4;
             BtnStartListening.Text = "Start Listening";
             BtnStartListening.UseVisualStyleBackColor = true;
             BtnStartListening.Click += BtnStartListening_Click;
@@ -201,7 +201,7 @@
             GrpBoxPresets.Location = new Point(522, 12);
             GrpBoxPresets.Name = "GrpBoxPresets";
             GrpBoxPresets.Size = new Size(266, 217);
-            GrpBoxPresets.TabIndex = 1;
+            GrpBoxPresets.TabIndex = 23;
             GrpBoxPresets.TabStop = false;
             GrpBoxPresets.Text = "Presets";
             // 
@@ -211,7 +211,7 @@
             BtnQueryPresets.Location = new Point(120, 70);
             BtnQueryPresets.Name = "BtnQueryPresets";
             BtnQueryPresets.Size = new Size(127, 106);
-            BtnQueryPresets.TabIndex = 9;
+            BtnQueryPresets.TabIndex = 10;
             BtnQueryPresets.Text = "Get Current Preset";
             BtnQueryPresets.UseVisualStyleBackColor = true;
             BtnQueryPresets.Click += BtnQueryPresets_Click;
@@ -223,7 +223,7 @@
             RadioBtnPreset4.Location = new Point(20, 163);
             RadioBtnPreset4.Name = "RadioBtnPreset4";
             RadioBtnPreset4.Size = new Size(94, 27);
-            RadioBtnPreset4.TabIndex = 3;
+            RadioBtnPreset4.TabIndex = 9;
             RadioBtnPreset4.TabStop = true;
             RadioBtnPreset4.Text = "Preset 4";
             RadioBtnPreset4.UseVisualStyleBackColor = true;
@@ -235,7 +235,7 @@
             RadioBtnPreset3.Location = new Point(20, 126);
             RadioBtnPreset3.Name = "RadioBtnPreset3";
             RadioBtnPreset3.Size = new Size(94, 27);
-            RadioBtnPreset3.TabIndex = 2;
+            RadioBtnPreset3.TabIndex = 8;
             RadioBtnPreset3.TabStop = true;
             RadioBtnPreset3.Text = "Preset 3";
             RadioBtnPreset3.UseVisualStyleBackColor = true;
@@ -247,7 +247,7 @@
             RadioBtnPreset2.Location = new Point(20, 85);
             RadioBtnPreset2.Name = "RadioBtnPreset2";
             RadioBtnPreset2.Size = new Size(94, 27);
-            RadioBtnPreset2.TabIndex = 1;
+            RadioBtnPreset2.TabIndex = 7;
             RadioBtnPreset2.TabStop = true;
             RadioBtnPreset2.Text = "Preset 2";
             RadioBtnPreset2.UseVisualStyleBackColor = true;
@@ -259,7 +259,7 @@
             RadioBtnPreset1.Location = new Point(20, 48);
             RadioBtnPreset1.Name = "RadioBtnPreset1";
             RadioBtnPreset1.Size = new Size(94, 27);
-            RadioBtnPreset1.TabIndex = 0;
+            RadioBtnPreset1.TabIndex = 6;
             RadioBtnPreset1.TabStop = true;
             RadioBtnPreset1.Text = "Preset 1";
             RadioBtnPreset1.UseVisualStyleBackColor = true;
@@ -287,7 +287,7 @@
             BtnQueryZones.Location = new Point(276, 151);
             BtnQueryZones.Name = "BtnQueryZones";
             BtnQueryZones.Size = new Size(226, 62);
-            BtnQueryZones.TabIndex = 16;
+            BtnQueryZones.TabIndex = 11;
             BtnQueryZones.Text = "Get Channel Status";
             BtnQueryZones.UseVisualStyleBackColor = true;
             BtnQueryZones.Click += BtnQueryZones_Click;
@@ -299,7 +299,7 @@
             BtnZone6.Location = new Point(654, 35);
             BtnZone6.Name = "BtnZone6";
             BtnZone6.Size = new Size(100, 100);
-            BtnZone6.TabIndex = 15;
+            BtnZone6.TabIndex = 21;
             BtnZone6.Text = "6";
             BtnZone6.UseVisualStyleBackColor = true;
             // 
@@ -310,7 +310,7 @@
             BtnZone5.Location = new Point(528, 35);
             BtnZone5.Name = "BtnZone5";
             BtnZone5.Size = new Size(100, 100);
-            BtnZone5.TabIndex = 14;
+            BtnZone5.TabIndex = 20;
             BtnZone5.Text = "5";
             BtnZone5.UseVisualStyleBackColor = true;
             // 
@@ -321,7 +321,7 @@
             BtnZone4.Location = new Point(402, 35);
             BtnZone4.Name = "BtnZone4";
             BtnZone4.Size = new Size(100, 100);
-            BtnZone4.TabIndex = 13;
+            BtnZone4.TabIndex = 19;
             BtnZone4.Text = "4";
             BtnZone4.UseVisualStyleBackColor = true;
             // 
@@ -332,7 +332,7 @@
             BtnZone3.Location = new Point(276, 35);
             BtnZone3.Name = "BtnZone3";
             BtnZone3.Size = new Size(100, 100);
-            BtnZone3.TabIndex = 12;
+            BtnZone3.TabIndex = 18;
             BtnZone3.Text = "3";
             BtnZone3.UseVisualStyleBackColor = true;
             // 
@@ -343,7 +343,7 @@
             BtnZone2.Location = new Point(150, 35);
             BtnZone2.Name = "BtnZone2";
             BtnZone2.Size = new Size(100, 100);
-            BtnZone2.TabIndex = 11;
+            BtnZone2.TabIndex = 17;
             BtnZone2.Text = "2";
             BtnZone2.UseVisualStyleBackColor = true;
             // 
@@ -354,7 +354,7 @@
             BtnZone1.Location = new Point(24, 35);
             BtnZone1.Name = "BtnZone1";
             BtnZone1.Size = new Size(100, 100);
-            BtnZone1.TabIndex = 10;
+            BtnZone1.TabIndex = 16;
             BtnZone1.Text = "1";
             BtnZone1.UseVisualStyleBackColor = true;
             // 
@@ -367,7 +367,7 @@
             TxtBoxSentData.ReadOnly = true;
             TxtBoxSentData.ScrollBars = ScrollBars.Vertical;
             TxtBoxSentData.Size = new Size(230, 357);
-            TxtBoxSentData.TabIndex = 3;
+            TxtBoxSentData.TabIndex = 14;
             // 
             // TxtBoxReceivedData
             // 
@@ -378,7 +378,7 @@
             TxtBoxReceivedData.ReadOnly = true;
             TxtBoxReceivedData.ScrollBars = ScrollBars.Vertical;
             TxtBoxReceivedData.Size = new Size(518, 357);
-            TxtBoxReceivedData.TabIndex = 4;
+            TxtBoxReceivedData.TabIndex = 15;
             // 
             // LblSentData
             // 
@@ -388,7 +388,7 @@
             LblSentData.Location = new Point(18, 506);
             LblSentData.Name = "LblSentData";
             LblSentData.Size = new Size(166, 29);
-            LblSentData.TabIndex = 5;
+            LblSentData.TabIndex = 24;
             LblSentData.Text = "Sent Data (Hex)";
             LblSentData.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -400,7 +400,7 @@
             LblReceivedData.Location = new Point(270, 506);
             LblReceivedData.Name = "LblReceivedData";
             LblReceivedData.Size = new Size(212, 29);
-            LblReceivedData.TabIndex = 6;
+            LblReceivedData.TabIndex = 25;
             LblReceivedData.Text = "Received Data (Hex)";
             LblReceivedData.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -410,7 +410,7 @@
             BtnClearSentData.Location = new Point(18, 904);
             BtnClearSentData.Name = "BtnClearSentData";
             BtnClearSentData.Size = new Size(200, 50);
-            BtnClearSentData.TabIndex = 7;
+            BtnClearSentData.TabIndex = 12;
             BtnClearSentData.Text = "Clear Sent Data";
             BtnClearSentData.UseVisualStyleBackColor = true;
             BtnClearSentData.Click += BtnClearSentData_Click;
@@ -421,7 +421,7 @@
             BtnClearReceivedData.Location = new Point(270, 904);
             BtnClearReceivedData.Name = "BtnClearReceivedData";
             BtnClearReceivedData.Size = new Size(200, 50);
-            BtnClearReceivedData.TabIndex = 8;
+            BtnClearReceivedData.TabIndex = 13;
             BtnClearReceivedData.Text = "Clear Received Data";
             BtnClearReceivedData.UseVisualStyleBackColor = true;
             BtnClearReceivedData.Click += BtnClearReceivedData_Click;
