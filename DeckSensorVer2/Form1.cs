@@ -4,7 +4,6 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-
 namespace DeckSensorVer2
 {
     public partial class Form1 : Form
@@ -17,24 +16,26 @@ namespace DeckSensorVer2
 
         UdpClient udpClient = new UdpClient();
 
+        // Create Array variable names for button arrays
         private RadioButton[] presetButtons;
         private Button[] zoneStatusButtons;
 
         public Form1()
         {
             InitializeComponent();
+            // Assign buttons and radio buttons to Array variables
+            presetButtons = [RadioBtnPreset1, RadioBtnPreset2, RadioBtnPreset3, RadioBtnPreset4];
+            zoneStatusButtons = [BtnZone1, BtnZone2, BtnZone3, BtnZone4, BtnZone5, BtnZone6];
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            presetButtons = [RadioBtnPreset1, RadioBtnPreset2, RadioBtnPreset3, RadioBtnPreset4];
-            zoneStatusButtons = [BtnZone1, BtnZone2, BtnZone3, BtnZone4, BtnZone5, BtnZone6];
-
+            // subscribe preset button arrays to click event
             foreach (var presetButton in presetButtons)
             {
                 presetButton.Click += PresetButton_Click;
             }
-
+            // subscribe button array to click event
             foreach (var zoneButton in zoneStatusButtons)
             {
                 zoneButton.Click += ZoneButton_Click;
@@ -43,42 +44,14 @@ namespace DeckSensorVer2
 
         private void ZoneButton_Click(object? sender, EventArgs e)
         {
+            // initialize click event for array
             Button? clickedZoneStatusBtn = sender as Button;
 
             if (clickedZoneStatusBtn != null)
             {
                 int zoneStatusBtnIdx = Array.IndexOf(zoneStatusButtons, clickedZoneStatusBtn);
-                Byte zoneByte = 0x3F;
-                switch (zoneStatusBtnIdx)
-                {
-                    case 0:
-                        zoneByte = 0x01;
-                        break;
-
-                    case 1:
-                        zoneByte = 0x02;
-                        break;
-
-                    case 2:
-                        zoneByte = 0x04;
-                        break;
-
-                    case 3:
-                        zoneByte = 0x08;
-                        break;
-
-                    case 4:
-                        zoneByte = 0x10;
-                        break;
-
-                    case 5:
-                        zoneByte = 0x20;
-                        break;
-
-                    default:
-                        break;
-                }
-                Byte[] dataToSend = { 0x54, 0x66, 0x66, zoneByte };
+                Byte[] zoneByte = { 0x01, 0x02, 0x04, 0x08, 0x10, 0x20 };
+                Byte[] dataToSend = { 0x54, 0x66, 0x66, zoneByte[zoneStatusBtnIdx] };
                 sendDataToDeckSensor(dataToSend);
             }
             else
@@ -89,6 +62,7 @@ namespace DeckSensorVer2
 
         private void PresetButton_Click(object? sender, EventArgs e)
         {
+            // initialize click event for array
             RadioButton? clickedRadioBtn = sender as RadioButton;
 
             int presetBtnIdx = Array.IndexOf(presetButtons, clickedRadioBtn);
@@ -151,7 +125,7 @@ namespace DeckSensorVer2
             for (int i = 0; i < dataReceived.Length; i++)
             {
                 int byteToSend = dataReceived[i];
-                TxtBoxReceivedData.Text += byteToSend.ToString("X2") + " ";
+                TxtBoxReceivedData.Text += byteToSend.ToString("X2") + " "; // formats text to use 2 char hex
             }
             TxtBoxReceivedData.Text += "\r\n";
 
@@ -203,7 +177,7 @@ namespace DeckSensorVer2
             for (int i = 0; i < dataLength; i++)
             {
                 int byteSent = bytesSent[i];
-                TxtBoxSentData.Text += byteSent.ToString("X2") + " ";
+                TxtBoxSentData.Text += byteSent.ToString("X2") + " ";// formats text to use 2 char hex
             }
 
             TxtBoxSentData.Text += "\r\n";
@@ -211,6 +185,7 @@ namespace DeckSensorVer2
 
         private void BtnStartListening_Click(object sender, EventArgs e)
         {
+            // background worker  allows listener to run in its own thread so that it doesn't halt entire program
             if (!backgroundWorker1.IsBusy)
             {
                 isListening = true;
@@ -218,7 +193,7 @@ namespace DeckSensorVer2
                 udpListenPort = int.Parse(TxtBoxUdpListenPort.Text);
                 udpSendPort = int.Parse(TxtBoxUdpSendPort.Text);
                 unitId = int.Parse(TxtBoxUniId.Text);
-                backgroundWorker1.RunWorkerAsync();
+                backgroundWorker1.RunWorkerAsync(); // starts the background worker
                 BtnStartListening.Text = "Listening";
                 BtnStartListening.Enabled = false;
                 BtnStopListening.Text = "Stop Listening";
@@ -240,7 +215,7 @@ namespace DeckSensorVer2
                 byte[] dataToSend = { 0x54, 0x66, 0x65, 0x00 };
                 int byteLength = dataToSend.Length;
                 isListening = false;
-                backgroundWorker1.CancelAsync();
+                backgroundWorker1.CancelAsync(); // stops the backgroundworker
                 BtnQueryPresets.Enabled = false;
                 BtnQueryZones.Enabled = false;
                 BtnStartListening.BackColor = Color.LightGray;
@@ -276,6 +251,7 @@ namespace DeckSensorVer2
 
         }
 
+        // creates the UDP listener in its own thread
         private void backgroundWorker1_DoWork_1(object sender, DoWorkEventArgs e)
         {
             UdpClient listener = new UdpClient(udpListenPort);
@@ -291,6 +267,7 @@ namespace DeckSensorVer2
             listener.Close();
         }
 
+        // this runs when backgroundworker is complete
         private void backgroundWorker1_RunWorkerCompleted_1(object sender, RunWorkerCompletedEventArgs e)
         {
             isListening = false;
