@@ -50,8 +50,10 @@ namespace DeckSensorVer2
             if (clickedZoneStatusBtn != null)
             {
                 int zoneStatusBtnIdx = Array.IndexOf(zoneStatusButtons, clickedZoneStatusBtn);
+
                 Byte[] zoneByte = { 0x01, 0x02, 0x04, 0x08, 0x10, 0x20 };
                 Byte[] dataToSend = { 0x54, 0x66, 0x66, zoneByte[zoneStatusBtnIdx] };
+
                 sendDataToDeckSensor(dataToSend);
             }
             else
@@ -108,6 +110,7 @@ namespace DeckSensorVer2
             {
                 Byte byteToSend = BitConverter.GetBytes(presetToSend)[0];
                 Byte[] dataToSend = { 0x54, 0x66, 0x64, byteToSend };
+
                 sendDataToDeckSensor(dataToSend);
             }
         }
@@ -129,11 +132,11 @@ namespace DeckSensorVer2
             }
             TxtBoxReceivedData.Text += "\r\n";
 
-           
             switch (dataType)
             {
                 case 101: // Preset Status Received - Preset Data has no Unit ID
                     int whichPreset = dataReceived[3];
+
                     if (presetButtons[whichPreset].Checked == false)
                     {
                         presetButtons[whichPreset].Checked = true;
@@ -145,6 +148,7 @@ namespace DeckSensorVer2
                     {
                         int whichZone = dataReceived[11];
                         int statusOfZone = dataReceived[12];
+
                         switch (statusOfZone)
                         {
                             case 1: // Zone Normal
@@ -185,7 +189,8 @@ namespace DeckSensorVer2
 
         private void BtnStartListening_Click(object sender, EventArgs e)
         {
-            // background worker  allows listener to run in its own thread so that it doesn't halt entire program
+            // background worker  allows listener to run in its
+            // own thread so that it doesn't halt entire program
             if (!backgroundWorker1.IsBusy)
             {
                 isListening = true;
@@ -201,6 +206,7 @@ namespace DeckSensorVer2
                 BtnStartListening.BackColor = Color.LightGreen;
                 BtnQueryPresets.Enabled = true;
                 BtnQueryZones.Enabled = true;
+
                 for (int i = 0; i <= 5; i++)
                 {
                     zoneStatusButtons[i].Enabled = true;
@@ -214,6 +220,7 @@ namespace DeckSensorVer2
             {
                 byte[] dataToSend = { 0x54, 0x66, 0x65, 0x00 };
                 int byteLength = dataToSend.Length;
+
                 isListening = false;
                 backgroundWorker1.CancelAsync(); // stops the backgroundworker
                 BtnQueryPresets.Enabled = false;
@@ -223,10 +230,12 @@ namespace DeckSensorVer2
                 BtnStartListening.Enabled = true;
                 BtnStopListening.Text = "Stopped";
                 BtnStopListening.Enabled = false;
+
                 for (int i = 0; i <= 5; i++)
                 {
                     zoneStatusButtons[i].Enabled = false;
                 }
+
                 sendDataToDeckSensor(dataToSend);
             }
         }
