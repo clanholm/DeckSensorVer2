@@ -146,7 +146,7 @@ namespace DeckSensorVer2
                     break;
 
                 case 105: // Heartbeat Received
-                    TxtBoxHeartbeat.Text = "Time: " + DateTime.Now.ToString("hh:mm:ss") + ": Heartbeat Received"; 
+                    TxtBoxHeartbeat.Text = "Time: " + DateTime.Now.ToString("hh:mm:ss") + ": Heartbeat Received";
                     TxtBoxHeartbeat.ForeColor = Color.DarkGreen;
                     break;
 
@@ -220,8 +220,8 @@ namespace DeckSensorVer2
                     zoneStatusButtons[i].Enabled = true;
                 }
 
-                Byte[] dataToSend = { 0x54, 0x66, 0x65, 0x00 };
-                sendDataToDeckSensor(dataToSend);
+                // Wait 2 Seconds and then get current preset
+                timer1.Start();
             }
         }
 
@@ -243,7 +243,7 @@ namespace DeckSensorVer2
                 BtnStopListening.Enabled = false;
                 TxtBoxHeartbeat.ForeColor = Color.DarkGray;
                 BtnSendHeartbeat.Enabled = false;
-                
+
                 for (int i = 0; i <= 5; i++)
                 {
                     zoneStatusButtons[i].Enabled = false;
@@ -302,6 +302,24 @@ namespace DeckSensorVer2
         {
             Byte[] dataToSend = { 0x54, 0x66, 0x69 };
             sendDataToDeckSensor(dataToSend);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // Get Current Preset
+            Byte[] dataToSend = { 0x54, 0x66, 0x65, 0x00 };
+            sendDataToDeckSensor(dataToSend);
+            timer1.Stop();
+        }
+
+        private void TxtBoxUdpListenPort_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtBoxUdpSendPort_MouseHover(object sender, EventArgs e)
+        {
+
         }
     }
 }

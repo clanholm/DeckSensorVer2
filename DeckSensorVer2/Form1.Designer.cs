@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             GrpBoxCommSettings = new GroupBox();
             TxtBoxUniId = new TextBox();
             TxtBoxUdpSendPort = new TextBox();
@@ -62,6 +63,9 @@
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             BtnSendHeartbeat = new Button();
             TxtBoxHeartbeat = new TextBox();
+            timer1 = new System.Windows.Forms.Timer(components);
+            toolTipListenPort = new ToolTip(components);
+            toolTipSendPort = new ToolTip(components);
             GrpBoxCommSettings.SuspendLayout();
             GrpBoxPresets.SuspendLayout();
             GrpBoxZoneStatus.SuspendLayout();
@@ -105,7 +109,9 @@
             TxtBoxUdpSendPort.Size = new Size(171, 30);
             TxtBoxUdpSendPort.TabIndex = 2;
             TxtBoxUdpSendPort.Text = "42007";
+            toolTipSendPort.SetToolTip(TxtBoxUdpSendPort, "Enter The Port Number of the \"Listen\" Port Set In The Deck Sensor. \r\nValue must be 1-65535");
             TxtBoxUdpSendPort.TextChanged += TxtBoxUdpSendPort_TextChanged;
+            TxtBoxUdpSendPort.MouseHover += TxtBoxUdpSendPort_MouseHover;
             // 
             // TxtBoxUdpListenPort
             // 
@@ -115,7 +121,9 @@
             TxtBoxUdpListenPort.Size = new Size(171, 30);
             TxtBoxUdpListenPort.TabIndex = 1;
             TxtBoxUdpListenPort.Text = "42507";
+            toolTipListenPort.SetToolTip(TxtBoxUdpListenPort, "Enter The Port Number of the \"Target\" Port Set In The Deck Sensor. \r\nValue Must be 1-65535");
             TxtBoxUdpListenPort.TextChanged += TxtBoxUdpListenPort_TextChanged;
+            TxtBoxUdpListenPort.MouseHover += TxtBoxUdpListenPort_MouseHover;
             // 
             // BtnStopListening
             // 
@@ -471,6 +479,21 @@
             TxtBoxHeartbeat.Text = "Heartbeat Received will show here.";
             TxtBoxHeartbeat.TextAlign = HorizontalAlignment.Center;
             // 
+            // timer1
+            // 
+            timer1.Interval = 2000;
+            timer1.Tick += timer1_Tick;
+            // 
+            // toolTipListenPort
+            // 
+            toolTipListenPort.BackColor = Color.FromArgb(255, 192, 128);
+            toolTipListenPort.ForeColor = Color.Black;
+            // 
+            // toolTipSendPort
+            // 
+            toolTipSendPort.BackColor = Color.FromArgb(255, 192, 128);
+            toolTipSendPort.ForeColor = Color.Black;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -535,5 +558,8 @@
         private TextBox TxtBoxUdpListenPort;
         private Button BtnSendHeartbeat;
         private TextBox TxtBoxHeartbeat;
+        private System.Windows.Forms.Timer timer1;
+        private ToolTip toolTipListenPort;
+        private ToolTip toolTipSendPort;
     }
 }
