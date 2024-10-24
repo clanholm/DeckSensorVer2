@@ -60,6 +60,8 @@
             BtnClearSentData = new Button();
             BtnClearReceivedData = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            BtnSendHeartbeat = new Button();
+            TxtBoxHeartbeat = new TextBox();
             GrpBoxCommSettings.SuspendLayout();
             GrpBoxPresets.SuspendLayout();
             GrpBoxZoneStatus.SuspendLayout();
@@ -294,69 +296,81 @@
             // 
             // BtnZone6
             // 
+            BtnZone6.BackColor = Color.LightGray;
             BtnZone6.Enabled = false;
             BtnZone6.Font = new Font("Consolas", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnZone6.ForeColor = SystemColors.ControlText;
             BtnZone6.Location = new Point(654, 35);
             BtnZone6.Name = "BtnZone6";
             BtnZone6.Size = new Size(100, 100);
             BtnZone6.TabIndex = 21;
             BtnZone6.Text = "6";
-            BtnZone6.UseVisualStyleBackColor = true;
+            BtnZone6.UseVisualStyleBackColor = false;
             // 
             // BtnZone5
             // 
+            BtnZone5.BackColor = Color.LightGray;
             BtnZone5.Enabled = false;
             BtnZone5.Font = new Font("Consolas", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnZone5.ForeColor = SystemColors.ControlText;
             BtnZone5.Location = new Point(528, 35);
             BtnZone5.Name = "BtnZone5";
             BtnZone5.Size = new Size(100, 100);
             BtnZone5.TabIndex = 20;
             BtnZone5.Text = "5";
-            BtnZone5.UseVisualStyleBackColor = true;
+            BtnZone5.UseVisualStyleBackColor = false;
             // 
             // BtnZone4
             // 
+            BtnZone4.BackColor = Color.LightGray;
             BtnZone4.Enabled = false;
             BtnZone4.Font = new Font("Consolas", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnZone4.ForeColor = SystemColors.ControlText;
             BtnZone4.Location = new Point(402, 35);
             BtnZone4.Name = "BtnZone4";
             BtnZone4.Size = new Size(100, 100);
             BtnZone4.TabIndex = 19;
             BtnZone4.Text = "4";
-            BtnZone4.UseVisualStyleBackColor = true;
+            BtnZone4.UseVisualStyleBackColor = false;
             // 
             // BtnZone3
             // 
+            BtnZone3.BackColor = Color.LightGray;
             BtnZone3.Enabled = false;
             BtnZone3.Font = new Font("Consolas", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnZone3.ForeColor = SystemColors.ControlText;
             BtnZone3.Location = new Point(276, 35);
             BtnZone3.Name = "BtnZone3";
             BtnZone3.Size = new Size(100, 100);
             BtnZone3.TabIndex = 18;
             BtnZone3.Text = "3";
-            BtnZone3.UseVisualStyleBackColor = true;
+            BtnZone3.UseVisualStyleBackColor = false;
             // 
             // BtnZone2
             // 
+            BtnZone2.BackColor = Color.LightGray;
             BtnZone2.Enabled = false;
             BtnZone2.Font = new Font("Consolas", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnZone2.ForeColor = SystemColors.ControlText;
             BtnZone2.Location = new Point(150, 35);
             BtnZone2.Name = "BtnZone2";
             BtnZone2.Size = new Size(100, 100);
             BtnZone2.TabIndex = 17;
             BtnZone2.Text = "2";
-            BtnZone2.UseVisualStyleBackColor = true;
+            BtnZone2.UseVisualStyleBackColor = false;
             // 
             // BtnZone1
             // 
+            BtnZone1.BackColor = Color.LightGray;
             BtnZone1.Enabled = false;
             BtnZone1.Font = new Font("Consolas", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnZone1.ForeColor = SystemColors.ControlText;
             BtnZone1.Location = new Point(24, 35);
             BtnZone1.Name = "BtnZone1";
             BtnZone1.Size = new Size(100, 100);
             BtnZone1.TabIndex = 16;
             BtnZone1.Text = "1";
-            BtnZone1.UseVisualStyleBackColor = true;
+            BtnZone1.UseVisualStyleBackColor = false;
             // 
             // TxtBoxSentData
             // 
@@ -366,7 +380,7 @@
             TxtBoxSentData.Name = "TxtBoxSentData";
             TxtBoxSentData.ReadOnly = true;
             TxtBoxSentData.ScrollBars = ScrollBars.Vertical;
-            TxtBoxSentData.Size = new Size(230, 357);
+            TxtBoxSentData.Size = new Size(230, 327);
             TxtBoxSentData.TabIndex = 14;
             // 
             // TxtBoxReceivedData
@@ -377,7 +391,7 @@
             TxtBoxReceivedData.Name = "TxtBoxReceivedData";
             TxtBoxReceivedData.ReadOnly = true;
             TxtBoxReceivedData.ScrollBars = ScrollBars.Vertical;
-            TxtBoxReceivedData.Size = new Size(518, 357);
+            TxtBoxReceivedData.Size = new Size(518, 327);
             TxtBoxReceivedData.TabIndex = 15;
             // 
             // LblSentData
@@ -407,9 +421,9 @@
             // BtnClearSentData
             // 
             BtnClearSentData.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnClearSentData.Location = new Point(18, 904);
+            BtnClearSentData.Location = new Point(18, 874);
             BtnClearSentData.Name = "BtnClearSentData";
-            BtnClearSentData.Size = new Size(200, 50);
+            BtnClearSentData.Size = new Size(128, 81);
             BtnClearSentData.TabIndex = 12;
             BtnClearSentData.Text = "Clear Sent Data";
             BtnClearSentData.UseVisualStyleBackColor = true;
@@ -418,9 +432,9 @@
             // BtnClearReceivedData
             // 
             BtnClearReceivedData.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnClearReceivedData.Location = new Point(270, 904);
+            BtnClearReceivedData.Location = new Point(270, 874);
             BtnClearReceivedData.Name = "BtnClearReceivedData";
-            BtnClearReceivedData.Size = new Size(200, 50);
+            BtnClearReceivedData.Size = new Size(140, 81);
             BtnClearReceivedData.TabIndex = 13;
             BtnClearReceivedData.Text = "Clear Received Data";
             BtnClearReceivedData.UseVisualStyleBackColor = true;
@@ -432,11 +446,38 @@
             backgroundWorker1.DoWork += backgroundWorker1_DoWork_1;
             backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted_1;
             // 
+            // BtnSendHeartbeat
+            // 
+            BtnSendHeartbeat.Enabled = false;
+            BtnSendHeartbeat.Font = new Font("Calibri", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnSendHeartbeat.Location = new Point(478, 874);
+            BtnSendHeartbeat.Name = "BtnSendHeartbeat";
+            BtnSendHeartbeat.Size = new Size(300, 60);
+            BtnSendHeartbeat.TabIndex = 27;
+            BtnSendHeartbeat.Text = "Send Heartbeat Request";
+            BtnSendHeartbeat.UseVisualStyleBackColor = true;
+            BtnSendHeartbeat.Click += BtnSendHeartbeat_Click;
+            // 
+            // TxtBoxHeartbeat
+            // 
+            TxtBoxHeartbeat.BackColor = SystemColors.Control;
+            TxtBoxHeartbeat.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            TxtBoxHeartbeat.ForeColor = Color.DarkGray;
+            TxtBoxHeartbeat.Location = new Point(478, 940);
+            TxtBoxHeartbeat.Name = "TxtBoxHeartbeat";
+            TxtBoxHeartbeat.ReadOnly = true;
+            TxtBoxHeartbeat.Size = new Size(300, 27);
+            TxtBoxHeartbeat.TabIndex = 28;
+            TxtBoxHeartbeat.Text = "Heartbeat Received will show here.";
+            TxtBoxHeartbeat.TextAlign = HorizontalAlignment.Center;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 967);
+            Controls.Add(TxtBoxHeartbeat);
+            Controls.Add(BtnSendHeartbeat);
             Controls.Add(BtnClearReceivedData);
             Controls.Add(BtnClearSentData);
             Controls.Add(LblReceivedData);
@@ -492,5 +533,7 @@
         private TextBox TxtBoxUniId;
         private TextBox TxtBoxUdpSendPort;
         private TextBox TxtBoxUdpListenPort;
+        private Button BtnSendHeartbeat;
+        private TextBox TxtBoxHeartbeat;
     }
 }

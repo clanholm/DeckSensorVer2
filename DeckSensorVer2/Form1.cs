@@ -13,6 +13,7 @@ namespace DeckSensorVer2
         int unitId = 7;
         string strIpAddress = "10.20.78.181";
         bool isListening = false;
+        bool presetReceived = false;
 
         UdpClient udpClient = new UdpClient();
 
@@ -106,7 +107,7 @@ namespace DeckSensorVer2
 
         private void sendPreset(int presetToSend)
         {
-            if (presetToSend >= 0 && presetToSend < 4)
+            if (presetToSend >= 0 && presetToSend < 4 && presetReceived)
             {
                 Byte byteToSend = BitConverter.GetBytes(presetToSend)[0];
                 Byte[] dataToSend = { 0x54, 0x66, 0x64, byteToSend };
@@ -123,7 +124,7 @@ namespace DeckSensorVer2
 
         private void parseReceivedData(byte[] dataReceived)
         {
-            int dataType = dataReceived[2]; // 0x65(Dec 101)=Preset | 0x6A(Dec 106)=Zone Status
+            int dataType = dataReceived[2]; // 0x65(Dec 101)=Preset | 0x6A(Dec 106)=Zone Status | 0x69(Dec 105)=Heartbeat
 
             for (int i = 0; i < dataReceived.Length; i++)
             {
@@ -136,11 +137,17 @@ namespace DeckSensorVer2
             {
                 case 101: // Preset Status Received - Preset Data has no Unit ID
                     int whichPreset = dataReceived[3];
+                    presetReceived = true;
 
                     if (presetButtons[whichPreset].Checked == false)
                     {
                         presetButtons[whichPreset].Checked = true;
                     }
+                    break;
+
+                case 105: // Heartbeat Received
+                    TxtBoxHeartbeat.Text = "Time: " + DateTime.Now.ToString("hh:mm:ss") + ": Heartbeat Received"; 
+                    TxtBoxHeartbeat.ForeColor = Color.DarkGreen;
                     break;
 
                 case 106: // Zone Status Received
@@ -206,11 +213,15 @@ namespace DeckSensorVer2
                 BtnStartListening.BackColor = Color.LightGreen;
                 BtnQueryPresets.Enabled = true;
                 BtnQueryZones.Enabled = true;
+                BtnSendHeartbeat.Enabled = true;
 
                 for (int i = 0; i <= 5; i++)
                 {
                     zoneStatusButtons[i].Enabled = true;
                 }
+
+                Byte[] dataToSend = { 0x54, 0x66, 0x65, 0x00 };
+                sendDataToDeckSensor(dataToSend);
             }
         }
 
@@ -230,10 +241,13 @@ namespace DeckSensorVer2
                 BtnStartListening.Enabled = true;
                 BtnStopListening.Text = "Stopped";
                 BtnStopListening.Enabled = false;
-
+                TxtBoxHeartbeat.ForeColor = Color.DarkGray;
+                BtnSendHeartbeat.Enabled = false;
+                
                 for (int i = 0; i <= 5; i++)
                 {
                     zoneStatusButtons[i].Enabled = false;
+                    zoneStatusButtons[i].BackColor = Color.LightGray;
                 }
 
                 sendDataToDeckSensor(dataToSend);
@@ -282,6 +296,12 @@ namespace DeckSensorVer2
             isListening = false;
             BtnQueryPresets.Enabled = false;
             BtnQueryZones.Enabled = false;
+        }
+
+        private void BtnSendHeartbeat_Click(object sender, EventArgs e)
+        {
+            Byte[] dataToSend = { 0x54, 0x66, 0x69 };
+            sendDataToDeckSensor(dataToSend);
         }
     }
 }
