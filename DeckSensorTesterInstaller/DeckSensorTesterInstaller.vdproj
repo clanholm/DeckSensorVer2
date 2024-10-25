@@ -86,7 +86,20 @@
             "PromptEnabled" = "11:TRUE"
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
-            "ComponentsUrl" = "8:"
+            "ComponentsUrl" = "8:C:\\Users\\Chuck\\source\\repos\\DeckSensorVer2\\DeckSensorVer2"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.8.0.x64"
+                    {
+                    "Name" = "8:.NET Desktop Runtime 8.0.10 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.8.0.x64"
+                    }
+                }
             }
         }
     }
@@ -196,7 +209,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DeckSensorTesterInstaller"
         "ProductCode" = "8:{95F52C95-6EB7-4F7E-BAD5-39EB945D3304}"
-        "PackageCode" = "8:{630302E4-9D2F-48BC-92EA-EB46E12BF7C8}"
+        "PackageCode" = "8:{73D20645-E7BA-4DDC-805E-A97D3B710887}"
         "UpgradeCode" = "8:{C84F3397-342C-4715-85BA-8382624C27B9}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -745,7 +758,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_BB8F5E60DB424DC8A4D528D3905A97AD"
             {
-            "SourcePath" = "8:..\\DeckSensorVer2\\obj\\Debug\\net8.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\DeckSensorVer2\\obj\\Release\\net8.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C023C37F3D2E4A81B3F4D62FE9B57CD2"
